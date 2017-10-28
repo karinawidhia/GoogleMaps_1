@@ -1,5 +1,6 @@
 package id.sch.smktelkom_mlg.learn.mapsgettingstarted;
 
+import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
@@ -11,30 +12,30 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.CircleOptions;
 import com.google.android.gms.maps.model.LatLng;
-import com.google.android.gms.maps.model.MarkerOptions;
 
 public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
 
     static final CameraPosition SEATTLE = CameraPosition.builder()
-            .target(new LatLng(47.6204, -122.3491))
+            .target(new LatLng(47.489805, -122.120502))
             .zoom(17)
             .bearing(0)
             .tilt(45)
             .build();
 
-    MarkerOptions renton;
+    /*MarkerOptions renton;
     MarkerOptions kirkland;
     MarkerOptions everett;
     MarkerOptions lynnwood;
     MarkerOptions montlake;
     MarkerOptions kent;
-    MarkerOptions showare;
+    MarkerOptions showare;*/
     GoogleMap m_map;
     Boolean mapReady = false;
     Button bMaps, bSat, bHy;
+    LatLng renton = new LatLng(47.489805, -122.120502);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
             }
         });*/
 
-        renton = new MarkerOptions()
+        /*renton = new MarkerOptions()
                 .position(new LatLng(47.489805, -122.120502))
                 .title("Renton")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.hockey1600));
@@ -98,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         showare = new MarkerOptions()
                 .position(new LatLng(47.38702, -122.23986))
                 .title("Showare Center")
-                .icon(BitmapDescriptorFactory.fromResource(R.drawable.hockey1600));
+                .icon(BitmapDescriptorFactory.fromResource(R.drawable.hockey1600));*/
 
         MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.maps);
         mapFragment.getMapAsync(this);
@@ -136,13 +137,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         toast.show();
         mapReady = true;
         m_map = googleMap;
-        m_map.addMarker(renton);
+        /*m_map.addMarker(renton);
         m_map.addMarker(kent);
         m_map.addMarker(showare);
         m_map.addMarker(kirkland);
         m_map.addMarker(everett);
         m_map.addMarker(lynnwood);
-        m_map.addMarker(montlake);
+        m_map.addMarker(montlake);*/
+        m_map.addCircle(new CircleOptions()
+                .center(renton)
+                .radius(200)
+                .strokeColor(Color.GREEN)
+                .fillColor(Color.argb(64, 0, 255, 0))
+        );
         flyTo(SEATTLE);
         /*LatLng nganjuk = new LatLng(53.3478, 6.2597);
         m_map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
