@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="id.sch.smktelkom_mlg.learn.mapsgettingstarted.MainActivity">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnMap"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Map" />
+
+            <Button
+                android:id="@+id/btnSat"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Satellite" />
+
+            <Button
+                android:id="@+id/btnHyb"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Hybrid" />
+        </LinearLayout>
+
+        <fragment
+            android:id="@+id/maps"
+            android:name="com.google.android.gms.maps.MapFragment"
+            android:layout_width="match_parent"
+            android:layout_height="fill_parent"
+            map:cameraBearing="112.5"
+            map:cameraTargetLat="-7.601427"
+            map:cameraTargetLng="111.901216"
+            map:cameraTilt="65"
+            map:cameraZoom="17" />
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
