@@ -21,21 +21,21 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Map" />
+                android:text="Seattle" />
 
             <Button
                 android:id="@+id/btnSat"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Satellite" />
+                android:text="New York" />
 
             <Button
                 android:id="@+id/btnHyb"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:text="Hybrid" />
+                android:text="Jakarta" />
         </LinearLayout>
 
         <fragment
