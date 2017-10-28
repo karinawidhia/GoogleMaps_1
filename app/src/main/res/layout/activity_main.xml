@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -11,7 +10,7 @@
         android:layout_height="fill_parent"
         android:orientation="vertical">
 
-        <LinearLayout
+        <!--<LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -36,17 +35,12 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Jakarta" />
-        </LinearLayout>
+        </LinearLayout>-->
 
         <fragment
             android:id="@+id/maps"
             android:name="com.google.android.gms.maps.MapFragment"
             android:layout_width="match_parent"
-            android:layout_height="fill_parent"
-            map:cameraBearing="112.5"
-            map:cameraTargetLat="-7.601427"
-            map:cameraTargetLng="111.901216"
-            map:cameraTilt="65"
-            map:cameraZoom="17" />
+            android:layout_height="fill_parent" />
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
