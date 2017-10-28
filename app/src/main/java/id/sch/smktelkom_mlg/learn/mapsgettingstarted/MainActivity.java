@@ -1,29 +1,24 @@
 package id.sch.smktelkom_mlg.learn.mapsgettingstarted;
 
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.widget.Button;
-import android.widget.Toast;
 
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.GoogleMap;
-import com.google.android.gms.maps.MapFragment;
-import com.google.android.gms.maps.OnMapReadyCallback;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.CircleOptions;
+import com.google.android.gms.maps.OnStreetViewPanoramaReadyCallback;
+import com.google.android.gms.maps.StreetViewPanorama;
+import com.google.android.gms.maps.StreetViewPanoramaFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.StreetViewPanoramaCamera;
 
-public class MainActivity extends AppCompatActivity implements OnMapReadyCallback {
+public class MainActivity extends AppCompatActivity implements OnStreetViewPanoramaReadyCallback {
 
-    static final CameraPosition SEATTLE = CameraPosition.builder()
+    /*static final CameraPosition SEATTLE = CameraPosition.builder()
             .target(new LatLng(47.489805, -122.120502))
             .zoom(17)
             .bearing(0)
             .tilt(45)
-            .build();
+            .build();*/
 
     /*MarkerOptions renton;
     MarkerOptions kirkland;
@@ -32,10 +27,10 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
     MarkerOptions montlake;
     MarkerOptions kent;
     MarkerOptions showare;*/
-    GoogleMap m_map;
+    /*GoogleMap m_map;
     Boolean mapReady = false;
     Button bMaps, bSat, bHy;
-    LatLng renton = new LatLng(47.489805, -122.120502);
+    LatLng renton = new LatLng(47.489805, -122.120502);*/
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -101,8 +96,9 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .title("Showare Center")
                 .icon(BitmapDescriptorFactory.fromResource(R.drawable.hockey1600));*/
 
-        MapFragment mapFragment = (MapFragment) getFragmentManager().findFragmentById(R.id.maps);
-        mapFragment.getMapAsync(this);
+        StreetViewPanoramaFragment streetViewPanoramaFragment = (StreetViewPanoramaFragment)
+                getFragmentManager().findFragmentById(R.id.streetView);
+        streetViewPanoramaFragment.getStreetViewPanoramaAsync(this);
     }
 
     @Override
@@ -127,23 +123,23 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
         return super.onOptionsItemSelected(item);
     }
 
-    private void flyTo(CameraPosition target) {
+    /*private void flyTo(CameraPosition target) {
         m_map.animateCamera(CameraUpdateFactory.newCameraPosition(target), 10000, null);
-    }
+    }*/
 
-    @Override
+    /*@Override
     public void onMapReady(GoogleMap googleMap) {
         Toast toast = Toast.makeText(getApplicationContext(), "Map Ready!", Toast.LENGTH_SHORT);
         toast.show();
         mapReady = true;
         m_map = googleMap;
-        /*m_map.addMarker(renton);
+        *//*m_map.addMarker(renton);
         m_map.addMarker(kent);
         m_map.addMarker(showare);
         m_map.addMarker(kirkland);
         m_map.addMarker(everett);
         m_map.addMarker(lynnwood);
-        m_map.addMarker(montlake);*/
+        m_map.addMarker(montlake);*//*
         m_map.addCircle(new CircleOptions()
                 .center(renton)
                 .radius(200)
@@ -151,9 +147,19 @@ public class MainActivity extends AppCompatActivity implements OnMapReadyCallbac
                 .fillColor(Color.argb(64, 0, 255, 0))
         );
         flyTo(SEATTLE);
-        /*LatLng nganjuk = new LatLng(53.3478, 6.2597);
+        *//*LatLng nganjuk = new LatLng(53.3478, 6.2597);
         m_map.setMapType(GoogleMap.MAP_TYPE_HYBRID);
         CameraPosition target = CameraPosition.builder().target(nganjuk).zoom(14).build();
-        m_map.moveCamera(CameraUpdateFactory.newCameraPosition(target));*/
+        m_map.moveCamera(CameraUpdateFactory.newCameraPosition(target));*//*
+    }*/
+
+    @Override
+    public void onStreetViewPanoramaReady(StreetViewPanorama streetViewPanorama) {
+        streetViewPanorama.setPosition(new LatLng(51.514957, -0.144562));
+        streetViewPanorama.setStreetNamesEnabled(true);
+        StreetViewPanoramaCamera camera = new StreetViewPanoramaCamera.Builder()
+                .bearing(180)
+                .build();
+        streetViewPanorama.animateTo(camera, 10000);
     }
 }
